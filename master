@@ -1,0 +1,22 @@
+###########################
+# Author: Sarah Richard
+# Case code: Python initiative
+# Description: Web scraper
+# Last modified 6/1/2020
+###########################
+
+# import ability to send HTTP requests
+import requests
+from datetime import datetime
+time=datetime.now().strftime("Date_%m-%d_Time_%H-%M") 
+    
+# note - LinkedIn web scraping is legal as of late 2019, per Forbes: 
+# https://www.forbes.com/sites/emmawoollacott/2019/09/10/linkedin-data-scraping-ruled-legal/#213a57671b54
+
+# [insert_project_number_from_url]
+url = 'https://www.linkedin.com/talent/hire/367790316/manage/shortlisted'
+data = requests.get(url)
+
+# dump resulting text to file
+with open('Analysis\LI scraper_'+time+'.csv', "w") as output_f:
+    output_f.write(data.text)
